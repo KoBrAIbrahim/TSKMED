@@ -223,9 +223,6 @@ function AdvancedProducts() {
                       }
                     </p>
                     <div className="product-footer">
-                      <span className="product-price">
-                        {product.price || 0} {language === 'ar' ? 'شيقل' : 'ILS'}
-                      </span>
                       <button 
                         className="details-btn"
                         onClick={(e) => handleDetailsClick(product.id, e)}

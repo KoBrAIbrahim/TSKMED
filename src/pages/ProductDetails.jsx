@@ -77,24 +77,6 @@ function ProductDetails() {
               <h1 className="product-title">{product.name}</h1>
             </div>
 
-            <div className="price-section">
-              <div className="price-wrapper">
-                {language === "ar" ? (
-                  <>
-                    <span className="price-label">{language === 'ar' ? 'السعر:' : 'Price:'}</span>
-                    <span className="price">{product.price}</span>
-                    <span className="currency">$</span>
-                  </>
-                ) : (
-                  <>
-                    <span className="price-label">{language === 'ar' ? 'السعر:' : 'Price:'}</span>
-                    <span className="currency">$</span>
-                    <span className="price">{product.price}</span>
-                  </>
-                )}
-              </div>
-            </div>
-
             {/* Description */}
             <div className="description-section">
               <h3 className="section-title">
