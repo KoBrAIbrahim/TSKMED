@@ -6,12 +6,12 @@ import { getAuth } from "firebase/auth";
 
 // إعدادات مشروعك من Firebase Console
 const firebaseConfig = {
-  apiKey: "AIzaSyAsPlAMOS-WYWk4-7PNa5yy973jsfon7uU",
-  authDomain: "my-company-7292f.firebaseapp.com",
-  projectId: "my-company-7292f",
-  storageBucket: "my-company-7292f.firebasestorage.app",
-  messagingSenderId: "1052488164454",
-  appId: "1:1052488164454:web:af12726fc36a6cfd3bf9a7"
+  apiKey: import.meta.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: import.meta.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.REACT_APP_FIREBASE_APP_ID
 };
 
 // تهيئة التطبيق
