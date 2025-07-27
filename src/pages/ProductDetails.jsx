@@ -194,17 +194,21 @@ function ProductDetails() {
           display: flex;
           justify-content: center;
           align-items: center;
-          min-height: 400px;
+          min-height: auto;
+aspect-ratio: 1 / 1;
+
         }
 
-        .main-image {
-          width: 100%;
-          max-width: 450px;
-          height: 450px;
-          border-radius: 16px;
-          object-fit: cover;
-          transition: transform 0.3s ease;
-        }
+ .main-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-width: 450px;
+  height: auto;
+  border-radius: 16px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
 
         .main-image:hover {
           transform: scale(1.05);
