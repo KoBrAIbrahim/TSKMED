@@ -84,9 +84,10 @@ function ProductDetails() {
               </h3>
 
               <div className="description-content">
-                <p className="description-text">
-                  {language === "ar" ? product.description : product.Eng_Des}
-                </p>
+               <p className="description-text" style={{ whiteSpace: "pre-line" }}>
+  {language === "ar" ? product.description : product.Eng_Des}
+</p>
+
               </div>
               
               <div className="warning-box">
@@ -98,6 +99,34 @@ function ProductDetails() {
                 </span>
               </div>
             </div>
+
+            {/* Size Section */}
+            {product.size && (
+              <div className="size-section">
+                <h3 className="section-title">
+                  {language === "ar" ? "الحجم" : "Size"}
+                </h3>
+                <div className="size-content">
+                  <p className="size-text" style={{ whiteSpace: "pre-line" }}>
+                    {product.size}
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {/* Components Section */}
+            {((language === "ar" && product.componentsAR) || (language === "en" && product.componentsEN)) && (
+              <div className="components-section">
+                <h3 className="section-title">
+                  {language === "ar" ? "المكونات" : "Components"}
+                </h3>
+                <div className="components-content">
+                  <p className="components-text" style={{ whiteSpace: "pre-line" }}>
+                    {language === "ar" ? product.componentsAR : product.componentsEN}
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -282,7 +311,9 @@ function ProductDetails() {
           color: #059669;
         }
 
-        .description-section {
+        .description-section,
+        .size-section,
+        .components-section {
           background: rgba(255, 255, 255, 0.95);
           backdrop-filter: blur(10px);
           border: 1px solid rgba(148, 163, 184, 0.2);
@@ -304,7 +335,9 @@ function ProductDetails() {
           border-bottom: 2px solid rgba(148, 163, 184, 0.2);
         }
 
-        .description-content {
+        .description-content,
+        .size-content,
+        .components-content {
           background-color: rgba(248, 250, 252, 0.6);
           backdrop-filter: blur(5px);
           border: 1px solid rgba(148, 163, 184, 0.15);
@@ -313,12 +346,38 @@ function ProductDetails() {
           margin-bottom: 2rem;
         }
 
-        .description-text {
+        .description-text,
+        .size-text,
+        .components-text {
           font-size: 1.1rem;
           line-height: 1.8;
           color: #64748b;
           margin: 0;
           font-weight: 400;
+        }
+
+        /* Size section specific styles */
+        .size-section {
+          border-left: 4px solid #F8F8F8FF;
+        }
+
+
+
+        .size-text {
+          color: #5E5E5EFF;
+          font-weight: 500;
+        }
+
+        /* Components section specific styles */
+        .components-section {
+          border-left: 4px solid #FFFFFFFF;
+        }
+
+      
+
+        .components-text {
+          color: #5E5E5EFF;
+          font-weight: 500;
         }
 
         .warning-box {
@@ -422,7 +481,9 @@ function ProductDetails() {
             font-size: 0.9rem;
           }
 
-          .description-section {
+          .description-section,
+          .size-section,
+          .components-section {
             padding: 1.5rem;
           }
 
@@ -430,11 +491,15 @@ function ProductDetails() {
             font-size: 1.3rem;
           }
 
-          .description-content {
+          .description-content,
+          .size-content,
+          .components-content {
             padding: 1.5rem;
           }
 
-          .description-text {
+          .description-text,
+          .size-text,
+          .components-text {
             font-size: 1rem;
           }
 
@@ -505,7 +570,9 @@ function ProductDetails() {
             font-size: 0.8rem;
           }
 
-          .description-section {
+          .description-section,
+          .size-section,
+          .components-section {
             padding: 1.25rem;
           }
 
@@ -514,11 +581,15 @@ function ProductDetails() {
             margin-bottom: 1.5rem;
           }
 
-          .description-content {
+          .description-content,
+          .size-content,
+          .components-content {
             padding: 1.25rem;
           }
 
-          .description-text {
+          .description-text,
+          .size-text,
+          .components-text {
             font-size: 0.95rem;
             line-height: 1.6;
           }
@@ -574,11 +645,15 @@ function ProductDetails() {
             font-size: 1.2rem;
           }
 
-          .description-section {
+          .description-section,
+          .size-section,
+          .components-section {
             padding: 1rem;
           }
 
-          .description-content {
+          .description-content,
+          .size-content,
+          .components-content {
             padding: 1rem;
           }
 

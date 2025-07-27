@@ -9,12 +9,14 @@ import {
   FaImage, 
   FaDollarSign, 
   FaTag, 
-  FaRegFileAlt , 
+  FaRegFileAlt, 
   FaGlobe,
   FaCheck,
   FaTimes,
   FaEdit,
-  FaSpinner
+  FaSpinner,
+  FaCog,
+  FaRulerCombined
 } from "react-icons/fa";
 
 const UpdateProduct = () => {
@@ -51,6 +53,11 @@ const UpdateProduct = () => {
         if (!productData.des_Links || !Array.isArray(productData.des_Links)) {
           productData.des_Links = [""];
         }
+
+        // Ensure new fields have default values if they don't exist
+        if (!productData.componentsAR) productData.componentsAR = "";
+        if (!productData.componentsEN) productData.componentsEN = "";
+        if (!productData.size) productData.size = "";
         
         console.log("Product data loaded:", productData);
         setProduct(productData);
@@ -88,6 +95,9 @@ const UpdateProduct = () => {
     if (!product.imageUrl?.trim()) newErrors.imageUrl = "رابط الصورة مطلوب";
     if (!product.description?.trim()) newErrors.description = "الوصف بالعربية مطلوب";
     if (!product.Eng_Des?.trim()) newErrors.Eng_Des = "الوصف بالإنجليزية مطلوب";
+    if (!product.componentsAR?.trim()) newErrors.componentsAR = "المكونات بالعربية مطلوبة";
+    if (!product.componentsEN?.trim()) newErrors.componentsEN = "المكونات بالإنجليزية مطلوبة";
+    if (!product.size?.trim()) newErrors.size = "الحجم مطلوب";
     
     // Validate image URL format
     if (product.imageUrl && !isValidUrl(product.imageUrl)) {
@@ -163,6 +173,9 @@ const UpdateProduct = () => {
         imageUrl: product.imageUrl.trim(),
         description: product.description.trim(),
         Eng_Des: product.Eng_Des.trim(),
+        componentsAR: product.componentsAR.trim(),
+        componentsEN: product.componentsEN.trim(),
+        size: product.size.trim(),
         des_Links: product.des_Links?.filter((link) => link.trim() !== "") || [],
         type: Number(product.type || 1),
         updatedAt: new Date().toISOString(), // Add timestamp
@@ -309,6 +322,29 @@ const UpdateProduct = () => {
               </select>
             </div>
 
+            {/* Size */}
+            <div style={styles.formGroup}>
+              <label style={styles.label}>
+                <FaRulerCombined style={styles.labelIcon} />
+                الحجم *
+              </label>
+              <textarea
+                placeholder="أدخل حجم المنتج (مثال: 100 مل، 50 قرص، إلخ...)"
+                value={product.size || ""}
+                onChange={(e) => handleChange("size", e.target.value)}
+                style={{
+                  ...styles.textarea,
+                  ...(errors.size ? styles.inputError : {}),
+                  minHeight: '80px'
+                }}
+                rows="2"
+              />
+              {errors.size && <span style={styles.errorText}>{errors.size}</span>}
+              <div style={styles.charCount}>
+                {(product.size || "").length} حرف
+              </div>
+            </div>
+
             {/* Main Image */}
             <div style={styles.formGroup}>
               <label style={styles.label}>
@@ -390,6 +426,55 @@ const UpdateProduct = () => {
               {errors.Eng_Des && <span style={styles.errorText}>{errors.Eng_Des}</span>}
               <div style={styles.charCount}>
                 {(product.Eng_Des || "").length} characters
+              </div>
+            </div>
+          </div>
+
+          {/* Components Section */}
+          <div style={styles.section}>
+            <h3 style={styles.sectionTitle}>المكونات والتركيب</h3>
+            
+            {/* Arabic Components */}
+            <div style={styles.formGroup}>
+              <label style={styles.label}>
+                <FaCog style={styles.labelIcon} />
+                المكونات بالعربية *
+              </label>
+              <textarea
+                placeholder="اكتب مكونات المنتج وتركيبه بالعربية..."
+                value={product.componentsAR || ""}
+                onChange={(e) => handleChange("componentsAR", e.target.value)}
+                style={{
+                  ...styles.textarea,
+                  ...(errors.componentsAR ? styles.inputError : {})
+                }}
+                rows="4"
+              />
+              {errors.componentsAR && <span style={styles.errorText}>{errors.componentsAR}</span>}
+              <div style={styles.charCount}>
+                {(product.componentsAR || "").length} حرف
+              </div>
+            </div>
+
+            {/* English Components */}
+            <div style={styles.formGroup}>
+              <label style={styles.label}>
+                <FaCog style={styles.labelIcon} />
+                المكونات بالإنجليزية *
+              </label>
+              <textarea
+                placeholder="Write product components and composition in English..."
+                value={product.componentsEN || ""}
+                onChange={(e) => handleChange("componentsEN", e.target.value)}
+                style={{
+                  ...styles.textarea,
+                  ...(errors.componentsEN ? styles.inputError : {})
+                }}
+                rows="4"
+              />
+              {errors.componentsEN && <span style={styles.errorText}>{errors.componentsEN}</span>}
+              <div style={styles.charCount}>
+                {(product.componentsEN || "").length} characters
               </div>
             </div>
           </div>

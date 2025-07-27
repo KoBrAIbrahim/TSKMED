@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { db } from "../../firebase";
 import { collection, addDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom"; // Your existing import
-import { FaArrowLeft, FaPlus, FaTrash, FaImage, FaDollarSign, FaTag, FaRegFileAlt, FaGlobe, FaCheck, FaTimes } from "react-icons/fa";
+import { FaArrowLeft, FaPlus, FaTrash, FaImage, FaDollarSign, FaTag, FaRegFileAlt, FaGlobe, FaCheck, FaTimes, FaCog, FaRulerCombined } from "react-icons/fa";
 
 
 const AddProduct = () => {
@@ -12,6 +12,9 @@ const AddProduct = () => {
   const [imageUrl, setImageUrl] = useState("");
   const [description, setDescription] = useState("");
   const [engDescription, setEngDescription] = useState("");
+  const [componentsAR, setComponentsAR] = useState("");
+  const [componentsEN, setComponentsEN] = useState("");
+  const [size, setSize] = useState("");
   const [desLinks, setDesLinks] = useState([""]);
   const [type, setType] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -25,6 +28,9 @@ const AddProduct = () => {
     if (!imageUrl.trim()) newErrors.imageUrl = "رابط الصورة مطلوب";
     if (!description.trim()) newErrors.description = "الوصف بالعربية مطلوب";
     if (!engDescription.trim()) newErrors.engDescription = "الوصف بالإنجليزية مطلوب";
+    if (!componentsAR.trim()) newErrors.componentsAR = "المكونات بالعربية مطلوبة";
+    if (!componentsEN.trim()) newErrors.componentsEN = "المكونات بالإنجليزية مطلوبة";
+    if (!size.trim()) newErrors.size = "الحجم مطلوب";
     
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -60,6 +66,9 @@ const AddProduct = () => {
         imageUrl,
         description,
         Eng_Des: engDescription,
+        componentsAR,
+        componentsEN,
+        size,
         des_Links: desLinks.filter((link) => link.trim() !== ""),
         type,
       });
@@ -159,6 +168,26 @@ const AddProduct = () => {
               </select>
             </div>
 
+            {/* Size */}
+            <div style={styles.formGroup}>
+              <label style={styles.label}>
+                <FaRulerCombined style={styles.labelIcon} />
+                الحجم
+              </label>
+              <textarea
+                placeholder="أدخل حجم المنتج (مثال: 100 مل، 50 قرص، إلخ...)"
+                value={size}
+                onChange={(e) => setSize(e.target.value)}
+                style={{
+                  ...styles.textarea,
+                  ...(errors.size ? styles.inputError : {}),
+                  minHeight: '80px'
+                }}
+                rows="2"
+              />
+              {errors.size && <span style={styles.errorText}>{errors.size}</span>}
+            </div>
+
             {/* Main Image */}
             <div style={styles.formGroup}>
               <label style={styles.label}>
@@ -224,6 +253,49 @@ const AddProduct = () => {
                 rows="4"
               />
               {errors.engDescription && <span style={styles.errorText}>{errors.engDescription}</span>}
+            </div>
+          </div>
+
+          {/* Components Section */}
+          <div style={styles.section}>
+            <h3 style={styles.sectionTitle}>المكونات والتركيب</h3>
+            
+            {/* Arabic Components */}
+            <div style={styles.formGroup}>
+              <label style={styles.label}>
+                <FaCog style={styles.labelIcon} />
+                المكونات بالعربية
+              </label>
+              <textarea
+                placeholder="اكتب مكونات المنتج وتركيبه بالعربية..."
+                value={componentsAR}
+                onChange={(e) => setComponentsAR(e.target.value)}
+                style={{
+                  ...styles.textarea,
+                  ...(errors.componentsAR ? styles.inputError : {})
+                }}
+                rows="4"
+              />
+              {errors.componentsAR && <span style={styles.errorText}>{errors.componentsAR}</span>}
+            </div>
+
+            {/* English Components */}
+            <div style={styles.formGroup}>
+              <label style={styles.label}>
+                <FaCog style={styles.labelIcon} />
+                المكونات بالإنجليزية
+              </label>
+              <textarea
+                placeholder="Write product components and composition in English..."
+                value={componentsEN}
+                onChange={(e) => setComponentsEN(e.target.value)}
+                style={{
+                  ...styles.textarea,
+                  ...(errors.componentsEN ? styles.inputError : {})
+                }}
+                rows="4"
+              />
+              {errors.componentsEN && <span style={styles.errorText}>{errors.componentsEN}</span>}
             </div>
           </div>
 
