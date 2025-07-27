@@ -355,7 +355,7 @@ function AdvancedHome() {
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          padding: 2rem;
+          padding: 1rem;
           opacity: 0;
           transform: translateY(20px);
           transition: all 0.8s ease;
@@ -474,7 +474,7 @@ function AdvancedHome() {
 
         .subtitle {
           font-size: clamp(1rem, 2vw, 1.25rem);
-          color: #686D74FF;
+          color: #535353FF;
           line-height: 1.6;
           max-width: 600px;
           margin: 0 auto;
@@ -722,9 +722,9 @@ function AdvancedHome() {
 
         @media (max-width: 480px) {
           .glass-container {
-            padding: 1.5rem 1rem;
-            margin: 0.5rem;
-            width: calc(100% - 1rem);
+           padding: 4rem 1rem 1.5rem;
+  margin: 0.5rem;
+  width: calc(100% - 1rem);
           }
 
           .logo-container {

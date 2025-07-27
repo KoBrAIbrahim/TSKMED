@@ -200,7 +200,7 @@ function ProductDetails() {
         .main-image {
           width: 100%;
           max-width: 450px;
-          height: 350px;
+          height: 450px;
           border-radius: 16px;
           object-fit: cover;
           transition: transform 0.3s ease;
@@ -524,12 +524,12 @@ function ProductDetails() {
           }
 
           .main-image-container {
-            padding: 1rem;
+            padding: 2rem;
             min-height: 220px;
           }
 
           .main-image {
-            height: 180px;
+            height: 400px;
           }
 
           .thumbnail-container {
