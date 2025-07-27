@@ -118,7 +118,7 @@ function ProductDetails() {
             {((language === "ar" && product.componentsAR) || (language === "en" && product.componentsEN)) && (
               <div className="components-section">
                 <h3 className="section-title">
-                  {language === "ar" ? "المكونات" : "Components"}
+                  {language === "ar" ? "المكونات والخصائص " : "Components and properties"}
                 </h3>
                 <div className="components-content">
                   <p className="components-text" style={{ whiteSpace: "pre-line" }}>
