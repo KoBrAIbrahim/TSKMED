@@ -53,8 +53,8 @@ function AdvancedHome() {
   useEffect(() => {
     const targetStats = {
       products: productCount,
-      customers: 2500,
-      rating: 4
+      customers: 1100,
+      rating: 4.5
     };
 
     const duration = 2000; // 2 seconds
@@ -247,7 +247,7 @@ function AdvancedHome() {
                 </h3>
                 <div className="map-container">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3404.5159!2d35.20127!3d31.94105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzHCsDU2JzI3LjgiTiAzNcKwMTInMDQuNiJF!5e0!3m2!1sen!2s!4v1234567890123"
+                    src="https://www.google.com/maps?q=31.940799785764714,35.20142861534125&z=19&output=embed"
                     width="100%"
                     height="400"
                     style={{border: 0, borderRadius: '8px'}}

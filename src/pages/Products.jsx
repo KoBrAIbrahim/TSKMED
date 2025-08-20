@@ -18,7 +18,7 @@ function AdvancedProducts() {
   const categories = {
     ar: [
       { id: 'all', name: 'جميع المنتجات', type: null },
-      { id: 'medicines', name: 'الأدوية', type: 1 },
+      { id: 'medicines', name: 'المنتجات والعلاجات', type: 1 },
       { id: 'electronics', name: 'أخرى', type: 2 }
 
     ],
@@ -202,7 +202,7 @@ function AdvancedProducts() {
                 {/* Product Type Badge */}
 <div className="product-type-badge">
   {product.type === 1 ? (
-    language === 'ar' ? 'دواء' : 'Medicine'
+    language === 'ar' ? 'منتج علاجي' : 'Medicine'
   ) : product.type === 2 ? (
     language === 'ar' ? 'أخرى' : 'Other'
   ) : (

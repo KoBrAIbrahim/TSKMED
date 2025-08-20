@@ -317,7 +317,7 @@ const UpdateProduct = () => {
                 onChange={(e) => handleChange("type", parseInt(e.target.value))}
                 style={styles.select}
               >
-                <option value={1}>أدوية</option>
+                <option value={1}>منتجات وعلاجات</option>
                 <option value={2}>إلكترونيات</option>
               </select>
             </div>
